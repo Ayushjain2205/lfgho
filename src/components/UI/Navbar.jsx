@@ -5,16 +5,16 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const router = useRouter();
 
-  const isActive = (route) => router.pathname === route;
+  const isActive = (route) => router.pathname.startsWith(route);
 
   return (
     <div className="fixed inset-x-0 bottom-0 ">
       <nav className="flex justify-between h-[60px] items-center px-[27px] border border-t-[#4D9C7D] bg-white">
-        <Link href="/" className="text-center flex flex-col items-center">
+        <Link href="/home" className="text-center flex flex-col items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`h-6 w-6 ${
-              isActive("/") ? "text-[#4D9C7D]" : "text-black"
+              isActive("/home") ? "text-[#4D9C7D]" : "text-black"
             }`}
             viewBox="0 0 25 25"
             fill="currentColor"
@@ -23,7 +23,7 @@ const Navbar = () => {
           </svg>
           <span
             className={`block w-[4px] h-[4px] rounded-full mt-1 ${
-              isActive("/") ? "bg-[#4D9C7D]" : "bg-white"
+              isActive("/home") ? "bg-[#4D9C7D]" : "bg-white"
             }`}
           />
         </Link>

@@ -31,7 +31,7 @@ const Scan = () => {
     <Layout>
       <div className="flex flex-col items-center">
         <Decorator />
-        <p className="mt-[60px] text-[16px] font-[500]">SCAN & PAY</p>
+        <p className="mt-[60px] mb-[40px] text-[16px] font-[500]">SCAN & PAY</p>
 
         <QrReader
           delay={100}
