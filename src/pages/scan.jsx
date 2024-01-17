@@ -23,14 +23,16 @@ const Scan = () => {
   };
 
   const previewStyle = {
-    height: 240,
-    width: 320,
+    height: 250,
+    width: 240,
   };
 
   return (
     <Layout>
-      <div>
+      <div className="flex flex-col items-center">
         <Decorator />
+        <p className="mt-[60px] text-[16px] font-[500]">SCAN & PAY</p>
+
         <QrReader
           delay={100}
           style={previewStyle}
@@ -38,7 +40,7 @@ const Scan = () => {
           onScan={handleScan}
           legacyMode={true}
         />
-        {/* <p>{result}</p> */}
+        <p className="mt-[30px]">earn cred points while you do it</p>
       </div>
     </Layout>
   );
