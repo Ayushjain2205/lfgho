@@ -17,7 +17,7 @@ const config = createConfig(
     walletConnectProjectId: process.env.WALLETCONNECT_PROJECT_ID,
 
     // Required
-    appName: "Your App Name",
+    appName: "Cred web3",
 
     // Optional
     appDescription: "Your App Description",
