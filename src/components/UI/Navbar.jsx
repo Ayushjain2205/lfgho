@@ -6,10 +6,10 @@ const Navbar = () => {
   const router = useRouter();
 
   const isActive = (route) => router.pathname === route;
-  console.log(router.pathname);
+
   return (
     <div className="fixed inset-x-0 bottom-0 ">
-      <nav className="flex justify-between h-[60px] items-center px-[27px] border border-t-[#4D9C7D]">
+      <nav className="flex justify-between h-[60px] items-center px-[27px] border border-t-[#4D9C7D] bg-white">
         <Link href="/" className="text-center flex flex-col items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

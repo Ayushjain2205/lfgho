@@ -4,7 +4,7 @@ import Navbar from "../UI/Navbar";
 const Layout = ({ children }) => {
   return (
     <div>
-      {children}
+      <div className="px-[27px] pt-[22px] mb-[65px]">{children}</div>
       <Navbar />
     </div>
   );
