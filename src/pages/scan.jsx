@@ -38,6 +38,9 @@ const Scan = () => {
           style={previewStyle}
           onError={handleError}
           onScan={handleScan}
+          constraints={{
+            video: { facingMode: "environment" },
+          }}
           legacyMode={true}
         />
         <p className="mt-[30px]">earn cred points while you do it</p>
