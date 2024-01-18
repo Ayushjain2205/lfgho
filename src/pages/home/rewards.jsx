@@ -27,7 +27,7 @@ const Rewards = () => {
     setIsFlickering(false);
     setCurrentCard(6);
     setTimeout(() => {
-      router.push("/home/redeem");
+      router.push("/home/claim");
     }, 1500);
   };
 
