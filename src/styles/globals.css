@@ -19,3 +19,12 @@ body {
 .flicker {
   animation: flicker-animation 0.4s infinite; /* Match the interval duration */
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
