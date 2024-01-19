@@ -13,10 +13,7 @@ const redeem = () => {
           waitlisted to get a free iphone
         </p>
         <div className="flex flex-col gap-[42px] justify-center items-center mb-[66px] w-[271px] h-[277px] rounded-[10px] bg-[#F4F7F6] border-[3px] border-[#4D9C7D]">
-          <img src="/images/brand6.png" />
-          <p className="text-[20px] w-[200px] text-center">
-            $100 off on your next purchase
-          </p>
+          <img src="/images/offer2.png" />
         </div>
       </div>
     </Layout>
