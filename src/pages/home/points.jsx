@@ -4,6 +4,13 @@ import Decorator from "../../components/UI/Decorator";
 import Link from "next/link";
 
 const Points = () => {
+  const cardData = [
+    { imgSrc: "/images/offer1.png", coins: 2000 },
+    { imgSrc: "/images/offer2.png", coins: 1500 },
+    { imgSrc: "/images/offer3.png", coins: 3000 },
+    { imgSrc: "/images/offer4.png", coins: 2500 },
+  ];
+
   return (
     <Layout>
       <Decorator />
@@ -15,13 +22,10 @@ const Points = () => {
       </div>
       <p className="mt-[42px] text-[16px] font-medium">OFFERS FOR YOU</p>
       <div className="flex gap-[30px] mt-[20px] px-[5px] overflow-x-auto no-scrollbar">
-        {Array.from({ length: 4 }, (_, index) => (
-          <Link href="/home/redeem">
-            <div
-              key={index}
-              className="relative flex-shrink-0 flex flex-col p-[20px] items-center min-w-[244px] h-[307px] bg-[#F4F7F6] rounded-[10px]"
-            >
-              <img src={`/images/offer${index + 1}.png`} alt="" />
+        {cardData.map((card, index) => (
+          <Link key={index} href="/home/redeem">
+            <div className="relative flex-shrink-0 flex flex-col p-[20px] items-center min-w-[244px] h-[307px] bg-[#F4F7F6] rounded-[10px]">
+              <img src={card.imgSrc} alt={`Offer ${index + 1}`} />
               <div className="absolute bottom-0 left-0 w-full h-[45px] bg-black text-white flex gap-[10px] items-center justify-center rounded-b-[10px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +39,7 @@ const Points = () => {
                     fill="white"
                   />
                 </svg>
-                <span>2000</span>
+                <span>{card.coins}</span>
               </div>
             </div>
           </Link>
