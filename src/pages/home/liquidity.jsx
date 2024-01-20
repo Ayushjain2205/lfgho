@@ -42,15 +42,22 @@ const liquidity = () => {
       </div>
       <div className="flex flex-col mt-[26px]">
         <label htmlFor="firstName" className="mb-[6px] text-[14px]">
-          Yield you will earn (%)
+          Reward you will earn
         </label>
-        <input
+        <div
           type="text"
           id="yield"
           name="yield"
           value="14%"
-          className="p-[12px] h-[48px] border border-black rounded-[6px]"
-        />
+          className="flex flex-row items-center  gap-[2px] p-[12px] py-[4px] h-[48px] border border-black rounded-[6px]"
+        >
+          <p className="text-[18px]">10000</p>
+          <img
+            className="h-[24px] w-[24px] mt-[4px]"
+            src="/svgs/coin.svg"
+            alt=""
+          />
+        </div>
       </div>
       <button className="self-center h-[45px] w-[213px] mt-[40px] bg-[#000] rounded-[10px] text-white">
         confirm
