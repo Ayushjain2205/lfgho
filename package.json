@@ -15,6 +15,7 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "react-qr-scanner": "^1.0.0-alpha.11",
+    "react-qrcode-logo": "^2.9.0",
     "viem": "^1.21.4",
     "wagmi": "^1.4.13"
   },

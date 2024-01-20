@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { QRCode } from "react-qrcode-logo";
 
 const Widget = () => {
   const [stage, setStage] = useState(1);
@@ -86,29 +87,69 @@ const Widget = () => {
         )}
 
         {stage === 3 && (
-          <div className="flex flex-col items-center justify-center h-[80px] bg-[#90C0AD]">
-            <div className="flex flex-row gap-[16px] items-center w-full p-[16px]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M15 8.00014C15 7.86753 14.9473 7.74036 14.8535 7.64659C14.7598 7.55282 14.6326 7.50014 14.5 7.50014H2.70699L5.85399 4.35414C5.90048 4.30766 5.93736 4.25247 5.96252 4.19173C5.98768 4.13099 6.00063 4.06589 6.00063 4.00014C6.00063 3.9344 5.98768 3.8693 5.96252 3.80856C5.93736 3.74782 5.90048 3.69263 5.85399 3.64614C5.80751 3.59966 5.75232 3.56278 5.69158 3.53762C5.63084 3.51246 5.56574 3.49951 5.49999 3.49951C5.43425 3.49951 5.36915 3.51246 5.30841 3.53762C5.24767 3.56278 5.19248 3.59966 5.14599 3.64614L1.14599 7.64614C1.09943 7.69259 1.06249 7.74776 1.03728 7.80851C1.01207 7.86925 0.9991 7.93438 0.9991 8.00014C0.9991 8.06591 1.01207 8.13103 1.03728 8.19178C1.06249 8.25252 1.09943 8.3077 1.14599 8.35414L5.14599 12.3541C5.19248 12.4006 5.24767 12.4375 5.30841 12.4627C5.36915 12.4878 5.43425 12.5008 5.49999 12.5008C5.56574 12.5008 5.63084 12.4878 5.69158 12.4627C5.75232 12.4375 5.80751 12.4006 5.85399 12.3541C5.90048 12.3077 5.93736 12.2525 5.96252 12.1917C5.98768 12.131 6.00063 12.0659 6.00063 12.0001C6.00063 11.9344 5.98768 11.8693 5.96252 11.8086C5.93736 11.7478 5.90048 11.6926 5.85399 11.6461L2.70699 8.50014H14.5C14.6326 8.50014 14.7598 8.44747 14.8535 8.3537C14.9473 8.25993 15 8.13275 15 8.00014Z"
-                  fill="white"
-                />
-              </svg>
+          <div>
+            <div className="flex flex-col items-center justify-center h-[80px] bg-[#90C0AD]">
+              <div className="flex flex-row gap-[16px] items-center w-full p-[16px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M15 8.00014C15 7.86753 14.9473 7.74036 14.8535 7.64659C14.7598 7.55282 14.6326 7.50014 14.5 7.50014H2.70699L5.85399 4.35414C5.90048 4.30766 5.93736 4.25247 5.96252 4.19173C5.98768 4.13099 6.00063 4.06589 6.00063 4.00014C6.00063 3.9344 5.98768 3.8693 5.96252 3.80856C5.93736 3.74782 5.90048 3.69263 5.85399 3.64614C5.80751 3.59966 5.75232 3.56278 5.69158 3.53762C5.63084 3.51246 5.56574 3.49951 5.49999 3.49951C5.43425 3.49951 5.36915 3.51246 5.30841 3.53762C5.24767 3.56278 5.19248 3.59966 5.14599 3.64614L1.14599 7.64614C1.09943 7.69259 1.06249 7.74776 1.03728 7.80851C1.01207 7.86925 0.9991 7.93438 0.9991 8.00014C0.9991 8.06591 1.01207 8.13103 1.03728 8.19178C1.06249 8.25252 1.09943 8.3077 1.14599 8.35414L5.14599 12.3541C5.19248 12.4006 5.24767 12.4375 5.30841 12.4627C5.36915 12.4878 5.43425 12.5008 5.49999 12.5008C5.56574 12.5008 5.63084 12.4878 5.69158 12.4627C5.75232 12.4375 5.80751 12.4006 5.85399 12.3541C5.90048 12.3077 5.93736 12.2525 5.96252 12.1917C5.98768 12.131 6.00063 12.0659 6.00063 12.0001C6.00063 11.9344 5.98768 11.8693 5.96252 11.8086C5.93736 11.7478 5.90048 11.6926 5.85399 11.6461L2.70699 8.50014H14.5C14.6326 8.50014 14.7598 8.44747 14.8535 8.3537C14.9473 8.25993 15 8.13275 15 8.00014Z"
+                    fill="white"
+                  />
+                </svg>
 
-              <div className="flex bg-white h-[60px] w-[60px]">
-                <img src="/svgs/makeup_logo.svg" alt="" />
+                <div className="flex bg-white h-[60px] w-[60px]">
+                  <img src="/svgs/makeup_logo.svg" alt="" />
+                </div>
+                <p className="text-[20px] font-semibold text-white ">
+                  Happy Cosmetics
+                </p>
               </div>
-              <p className="text-[20px] font-semibold text-white ">
-                Happy Cosmetics
+            </div>
+            <div className="flex flex-col items-center h-[560px] bg-[#fff] p-[16px]">
+              <p className="w-full text-[18px] mb-[12px] ">
+                Scan with Entropay
               </p>
+              <QRCode
+                value="https://example.com" // Your desired link or text to encode into the QR code
+                logoImage="/images/entropay.png" // Your custom logo image
+                logoWidth={50} // Width of the logo
+                logoHeight={50} // Height of the logo
+                qrStyle="squares" // Style of the QR code (dots or squares)
+                bgColor="#FFFFFF" // Background color
+                fgColor="#4D9C7D" // Foreground color
+                size={180} // Size of the QR code
+              />
+              <div className="flex flex-col mt-[12px] w-full">
+                <label
+                  htmlFor="firstName"
+                  className="mb-[6px] mt-[8px] text-[14px]"
+                >
+                  Entropay id
+                </label>
+                <input
+                  type="text"
+                  id="yield"
+                  name="yield"
+                  value="iyush@entropay"
+                  className="p-[12px] h-[42px] border border-black rounded-[6px]"
+                />
+              </div>
+              <div className="flex flex-col w-full">
+                <button className="self-center h-[45px] w-full mt-[80px]">
+                  Pay Now
+                </button>
+                <button className="self-center h-[45px] w-full mt-[20px] bg-[#90C0AD] rounded-[10px] text-white font-bold">
+                  Pay Later
+                </button>
+              </div>
             </div>
           </div>
         )}
