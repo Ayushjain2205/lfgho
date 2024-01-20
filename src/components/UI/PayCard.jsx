@@ -10,6 +10,7 @@ const PayCard = () => {
           </span>
           <span className="mt-[24px] text-[#c4c4c4] font-[500]">Jan 2024</span>
           <span className="text-[24px] font-bold">$342</span>
+          <span className=" text-[#c4c4c4] font-[500]">$500</span>
         </div>
         <div className="flex flex-col mt-[16px] mr-[18px] ">
           <svg
