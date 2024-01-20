@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router"; // Import useRouter from next/router
 import Layout from "../../components/Layout/Layout";
-import SwipeButton from "./SwipeButton"; // Make sure this path is correct
+import SwipeButton from "./SwipeButton";
 
 const Payment = () => {
-  const [reset, setReset] = useState(0);
+  const [paymentVerified, setPaymentVerified] = useState(false);
+  const router = useRouter(); // Initialize useRouter
 
   const handleSubmit = () => {
     console.log("Payment Verified");
-    // Add logic here for what happens after payment verification
+    setPaymentVerified(true); // Set paymentVerified to true
   };
+
+  useEffect(() => {
+    if (paymentVerified) {
+      const timer = setTimeout(() => {
+        router.push("/payment/success"); // Navigate to /payments/success
+      }, 2000); // 2 seconds delay
+
+      return () => clearTimeout(timer); // Clear the timeout if the component unmounts
+    }
+  }, [paymentVerified, router]);
 
   return (
     <Layout>
