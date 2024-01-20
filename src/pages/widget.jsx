@@ -1,16 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { QRCode } from "react-qrcode-logo";
+import Sheet from "react-modal-sheet";
+import Loader from "../components/Lottie/Loader";
+import Done from "../components/Lottie/Done";
 
 const Widget = () => {
   const [stage, setStage] = useState(1);
+  const [isBottomSheetOpen, setBottomSheetOpen] = useState(false);
+  const [isPaymentSuccessful, setPaymentSuccessful] = useState(false);
+
+  // Toggle bottom sheet
+  const toggleBottomSheet = () => {
+    setBottomSheetOpen(!isBottomSheetOpen);
+    // Reset payment status when bottom sheet is opened
+    if (!isBottomSheetOpen) {
+      setPaymentSuccessful(false);
+    }
+  };
 
   const handleProceed = () => {
     setStage(stage + 1);
   };
 
+  // Effect for handling payment verification
+  useEffect(() => {
+    if (isBottomSheetOpen) {
+      const timer = setTimeout(() => {
+        setPaymentSuccessful(true);
+      }, 3000); // 3 seconds delay
+
+      return () => clearTimeout(timer);
+    }
+  }, [isBottomSheetOpen]);
+
   return (
     <div className="flex flex-row h-screen bg-slate-50">
-      <div className="flex flex-col h-[640px] w-[375px] m-auto shadow-lg">
+      <div
+        className={`flex flex-col h-[640px] w-[375px] m-auto shadow-lg relative`}
+      >
         {stage === 1 && (
           <div className="flex flex-col items-center justify-center h-[425px]">
             <button onClick={handleProceed}>Buy</button>
@@ -87,7 +114,7 @@ const Widget = () => {
         )}
 
         {stage === 3 && (
-          <div>
+          <div style={{ position: "relative", flex: "1" }}>
             <div className="flex flex-col items-center justify-center h-[80px] bg-[#90C0AD]">
               <div className="flex flex-row gap-[16px] items-center w-full p-[16px]">
                 <svg
@@ -143,13 +170,64 @@ const Widget = () => {
                 />
               </div>
               <div className="flex flex-col w-full">
-                <button className="self-center h-[45px] w-full mt-[80px]">
+                <button
+                  onClick={toggleBottomSheet}
+                  className="self-center h-[45px] w-full mt-[80px]"
+                >
                   Pay Now
                 </button>
-                <button className="self-center h-[45px] w-full mt-[20px] bg-[#90C0AD] rounded-[10px] text-white font-bold">
+                <button
+                  onClick={toggleBottomSheet}
+                  className="self-center h-[45px] w-full mt-[20px] bg-[#90C0AD] rounded-[10px] text-white font-bold"
+                >
                   Pay Later
                 </button>
               </div>
+              {/* Overlay for Blur Effect */}
+              {isBottomSheetOpen && (
+                <div
+                  className="absolute inset-0 bg-black bg-opacity-30"
+                  style={{ backdropFilter: "blur(2px)" }}
+                ></div>
+              )}
+
+              {/* Bottom Sheet */}
+              {isBottomSheetOpen && (
+                <div className="absolute bottom-0 left-0 w-full bg-white p-4">
+                  <div className="flex flex-col items-center relative">
+                    <button
+                      onClick={toggleBottomSheet}
+                      className="absolute right-[4px]"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+
+                    {isPaymentSuccessful ? <Done /> : <Loader />}
+                    <p
+                      className={`text-[20px] font-semibold ${
+                        !isPaymentSuccessful ? "-mt-[30px]" : ""
+                      } mb-[20px]`}
+                    >
+                      {isPaymentSuccessful
+                        ? "Payment Successful!"
+                        : "Verifying Payment"}
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
