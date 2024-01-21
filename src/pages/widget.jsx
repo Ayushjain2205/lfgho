@@ -22,6 +22,10 @@ const Widget = () => {
     setStage(stage + 1);
   };
 
+  const handleBack = () => {
+    setStage(stage - 1);
+  };
+
   // Effect for handling payment verification
   useEffect(() => {
     if (isBottomSheetOpen) {
@@ -132,6 +136,7 @@ const Widget = () => {
                   height="16"
                   viewBox="0 0 16 16"
                   fill="none"
+                  onClick={handleBack}
                 >
                   <path
                     fill-rule="evenodd"
