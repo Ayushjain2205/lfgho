@@ -40,13 +40,18 @@ const Widget = () => {
       >
         {stage === 1 && (
           <div className="flex flex-col items-center justify-center h-[425px]">
-            <button onClick={handleProceed}>Buy</button>
+            <button
+              class="w-50 py-2.5 px-5 bg-red-600 text-white border-none mt-10 text-lg font-medium cursor-pointer transition-transform duration-500 ease-out hover:scale-110"
+              onClick={handleProceed}
+            >
+              Buy
+            </button>
           </div>
         )}
 
         {stage === 2 && (
           <div>
-            <div className="flex flex-col items-center justify-center h-[425px] bg-[#90C0AD]">
+            <div className="flex flex-col items-center justify-center h-[425px] bg-[#90C0AD] relative">
               <div className="flex bg-white h-[100px] w-[100px]">
                 <img src="/svgs/makeup_logo.svg" alt="" />
               </div>
@@ -71,6 +76,10 @@ const Widget = () => {
                 Total Amount
               </p>
               <p className="text-[26px] font-[500] text-white">$109</p>
+              <div className="flex flex-row gap-[5px] absolute bottom-[5px]">
+                <span className="text-white"> Powered by</span>
+                <img src="/svgs/entropay.svg" className="h-[25px]" alt="" />
+              </div>
             </div>
             <div className="flex flex-col h-[215px] bg-[#fff] p-[16px]">
               <div className="flex flex-row items-center gap-[8px] ">
