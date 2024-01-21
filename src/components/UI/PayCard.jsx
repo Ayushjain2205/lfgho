@@ -6,7 +6,7 @@ const PayCard = () => {
       <div className="flex flex-row justify-between">
         <div className="flex flex-col">
           <span className="text-[14px] font-[500] text-[#90C0AD]">
-            iyushjain.eth
+            iyushjain@entropay
           </span>
           <span className="mt-[24px] text-[#c4c4c4] font-[500]">Jan 2024</span>
           <span className="text-[24px] font-bold">$342</span>

@@ -17,7 +17,9 @@ const Scan = () => {
     if (data) {
       setResult(data);
       console.log(data);
-      router.push("/payment"); // Navigate to /payment when QR code is successfully scanned
+      setTimeout(() => {
+        router.push("/payment");
+      }, 2000);
     }
   };
 

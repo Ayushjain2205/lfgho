@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { QRCode } from "react-qrcode-logo";
-import Sheet from "react-modal-sheet";
+import { CopyBlock, dracula } from "react-code-blocks";
 import Loader from "../components/Lottie/Loader";
 import Done from "../components/Lottie/Done";
 
@@ -37,18 +37,150 @@ const Widget = () => {
     }
   }, [isBottomSheetOpen]);
 
+  const [config, setConfig] = useState({
+    buttonText: "Pay Now",
+    primaryColor: "#90C0AD",
+    textColor: "#FFFFFF",
+    amount: "109",
+    receiverAddress: "HappyCosmetics@Entropay",
+    blockchain: "Sepolia",
+  });
+
+  const handleChange = (e) => {
+    setConfig({ ...config, [e.target.name]: e.target.value });
+  };
+
+  const getButtonStyles = () => {
+    return {
+      backgroundColor: config.primaryColor,
+      color: config.textColor,
+    };
+  };
+
+  const widgetCode = `
+import EntropayWidget from "../../widget/ui.jsx";
+
+<EntropayWidget
+    buttonText = "Pay Now",
+    primaryColor = "#90C0AD",
+    textColor =  "#FFFFFF",
+    amount =  "109",
+    receiverAddress =  "HappyCosmetics@Entropay",
+    blockchain =  "Sepolia",
+/>
+`;
+
   return (
     <div className="flex flex-row h-screen bg-slate-50">
-      <div
-        className={`flex flex-col h-[640px] w-[375px] m-auto shadow-lg relative`}
-      >
+      <div className="flex flex-col overflow-auto w-[480px] border-r p-4">
+        <h2 className="text-xl mb-4">Widget Configuration</h2>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col mt-2">
+            <label htmlFor="buttonText" className="mb-1.5 mt-2 text-sm">
+              Button Text
+            </label>
+            <input
+              type="text"
+              id="buttonText"
+              name="buttonText"
+              value={config.buttonText}
+              onChange={handleChange}
+              className="p-3 h-10.5 border border-black rounded-lg"
+            />
+          </div>
+
+          <div className="flex flex-col mt-2">
+            <label htmlFor="primaryColor" className="mb-1.5 mt-2 text-sm">
+              Primary Color
+            </label>
+            <input
+              type="color"
+              id="primaryColor"
+              name="primaryColor"
+              value={config.primaryColor}
+              onChange={handleChange}
+              className=" h-10.5 border"
+            />
+          </div>
+
+          <div className="flex flex-col mt-2">
+            <label htmlFor="textColor" className="mb-1.5 mt-2 text-sm">
+              Text Color
+            </label>
+            <input
+              type="color"
+              id="textColor"
+              name="textColor"
+              value={config.textColor}
+              onChange={handleChange}
+              className=" h-10.5"
+            />
+          </div>
+
+          <div className="flex flex-col mt-2">
+            <label htmlFor="amount" className="mb-1.5 mt-2 text-sm">
+              Amount
+            </label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              value={config.amount}
+              onChange={handleChange}
+              className="p-3 h-10.5 border border-black rounded-lg"
+            />
+          </div>
+
+          <div className="flex flex-col mt-2">
+            <label htmlFor="receiverAddress" className="mb-1.5 mt-2 text-sm">
+              Receiver Address
+            </label>
+            <input
+              type="text"
+              id="receiverAddress"
+              name="receiverAddress"
+              value={config.receiverAddress}
+              onChange={handleChange}
+              className="p-3 h-10.5 border border-black rounded-lg"
+            />
+          </div>
+
+          <div className="flex flex-col mt-2">
+            <label htmlFor="blockchain" className="mb-1.5 mt-2 text-sm">
+              Blockchain
+            </label>
+            <select
+              id="blockchain"
+              name="blockchain"
+              value={config.blockchain}
+              onChange={handleChange}
+              className="p-3 h-10.5 border border-black rounded-lg"
+            >
+              <option value="Sepolia">Sepolia</option>
+              <option value="Ethereum">Ethereum</option>
+              <option value="Polygon-Mumbai">Polygon Mumbai</option>
+              <option value="Polygon">Polygon</option>
+            </select>
+          </div>
+          <p className="mt-[15px] font-semibold mb-[6px]">Copy Code</p>
+          <CopyBlock
+            language="js"
+            text={widgetCode}
+            codeBlock
+            theme={dracula}
+            showLineNumbers={false}
+          />
+        </div>
+      </div>
+      <div className="flex flex-col h-[640px] w-[375px] m-auto shadow-lg relative">
         {stage === 1 && (
           <div className="flex flex-col items-center justify-center h-[425px]">
             <button
-              class="w-50 py-2.5 px-5 bg-red-600 text-white border-none mt-10 text-lg font-medium cursor-pointer transition-transform duration-500 ease-out hover:scale-110"
+              style={getButtonStyles()}
+              className="py-2.5 px-5 border-none mt-10 text-lg font-medium cursor-pointer transition-transform duration-500 ease-out hover:scale-110"
               onClick={handleProceed}
             >
-              Buy
+              {config.buttonText}
             </button>
           </div>
         )}
