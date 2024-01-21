@@ -1,5 +1,11 @@
 import "@/styles/globals.css";
-// Import statements remain the same in JavaScript
+import {
+  ThirdwebProvider,
+  metamaskWallet,
+  coinbaseWallet,
+  walletConnect,
+} from "@thirdweb-dev/react";
+import { Sepolia } from "@thirdweb-dev/chains";
 
 import { WagmiConfig, createConfig } from "wagmi";
 import {
@@ -8,31 +14,38 @@ import {
   getDefaultConfig,
 } from "connectkit";
 
-// In JavaScript, we don't specify types, so the AppProps import is removed
-
 const config = createConfig(
   getDefaultConfig({
-    // Required API Keys
     alchemyId: process.env.ALCHEMY_ID, // or infuraId
     walletConnectProjectId: process.env.WALLETCONNECT_PROJECT_ID,
 
     // Required
-    appName: "Cred web3",
+    appName: "Entropay",
 
     // Optional
-    appDescription: "Your App Description",
-    appUrl: "https://family.co", // your app's url
-    appIcon: "https://family.co/logo.png", // your app's icon, no bigger than 1024x1024px (max. 1MB)
+    appDescription: "Payment super app",
   })
 );
 
 // Function parameters and JSX stay the same in JavaScript
 export default function App({ Component, pageProps }) {
   return (
-    <WagmiConfig config={config}>
-      <ConnectKitProvider>
-        <Component {...pageProps} />
-      </ConnectKitProvider>
-    </WagmiConfig>
+    <ThirdwebProvider
+      activeChain={Sepolia}
+      supportedWallets={[
+        metamaskWallet({
+          recommended: true,
+        }),
+        coinbaseWallet(),
+        walletConnect(),
+      ]}
+      clientId="b15beee7a57a183623d3b2d664b8b2d4"
+    >
+      <WagmiConfig config={config}>
+        <ConnectKitProvider>
+          <Component {...pageProps} />
+        </ConnectKitProvider>
+      </WagmiConfig>
+    </ThirdwebProvider>
   );
 }
