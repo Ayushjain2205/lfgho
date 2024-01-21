@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import Layout from "../components/Layout/Layout";
 import Decorator from "../components/UI/Decorator";
 
@@ -10,11 +11,13 @@ const QrReader = dynamic(() => import("react-qr-scanner"), {
 
 const Scan = () => {
   const [result, setResult] = useState("No result");
+  const router = useRouter(); // Initialize useRouter
 
   const handleScan = (data) => {
     if (data) {
       setResult(data);
-      console.log(result);
+      console.log(data);
+      router.push("/payment"); // Navigate to /payment when QR code is successfully scanned
     }
   };
 
